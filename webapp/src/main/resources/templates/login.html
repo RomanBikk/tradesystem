@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org" >
+<head>
+    <title>Welcome to Spring Security Thymeleaf tutorial</title>
+</head>
+<body>
+    <h2>Welcome</h2>
+    <p>Spring Security Thymeleaf tutorial</p>
+    <div sec:authorize="hasRole('USER')">Text visible to user.</div>
+    <div sec:authorize="hasRole('ADMIN')">Text visible to admin.</div>
+    <div sec:authorize="isAuthenticated()">
+        <a href="/web/logout">Logout</a>
+    </div>
+    Authenticated username:
+    <div sec:authentication="name"></div>
+    Authenticated user roles:
+
+
+    <br>
+    <form method="post" action="/web/login">
+        <input type="text" name="username"><br>
+        <input type="password" name="password"><br>
+        <input type="submit">
+    </form>
+</body>
+</html>
